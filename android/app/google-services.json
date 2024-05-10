@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "309288754151",
+    "project_id": "babidealz",
+    "storage_bucket": "babidealz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309288754151:android:fddef05c80d062fe5b3b42",
+        "android_client_info": {
+          "package_name": "com.example.babi_dealz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309288754151-7f4vgp4nlijstgfen0fpom11rg7treen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdnvBHL9vAphFTzhLbd8CuSPeJl4jEMy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309288754151-7f4vgp4nlijstgfen0fpom11rg7treen.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "309288754151-332ub0h8ls0aq8leqaa451q2k4b3d8db.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.babiDealzApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309288754151:android:f9c545956e8a4ab85b3b42",
+        "android_client_info": {
+          "package_name": "com.example.crud_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309288754151-7f4vgp4nlijstgfen0fpom11rg7treen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdnvBHL9vAphFTzhLbd8CuSPeJl4jEMy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309288754151-7f4vgp4nlijstgfen0fpom11rg7treen.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "309288754151-332ub0h8ls0aq8leqaa451q2k4b3d8db.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.babiDealzApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
