@@ -29,5 +29,9 @@ class FireStoreServices {
       'timestamp': Timestamp.now(),
     });
   }
+
 //DELETE - REMOVE - delete note given id
+  Future<void> deleteNote(String docId) async {
+    await notes.doc(docId).delete();
+  }
 }
