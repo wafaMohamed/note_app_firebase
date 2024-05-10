@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../database/remote/firestore_services.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -8,7 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController textController = TextEditingController();
+  FireStoreServices fireStoreServices = FireStoreServices.instance;
 
   void openNoteDialog() {
     showDialog(
@@ -16,14 +19,19 @@ class _HomePageState extends State<HomePage> {
       builder: (context) => AlertDialog(
         // text user input
         content: TextField(
-          controller: controller,
+          controller: textController,
           decoration: InputDecoration(
             hintText: 'Title',
           ),
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              // add new note
+              fireStoreServices.addNote(textController.text);
+              // clear the text controller
+              textController.clear();
+            },
             child: Text(
               'Add Note',
             ),

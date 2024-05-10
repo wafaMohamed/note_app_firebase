@@ -8,6 +8,13 @@ class FireStoreServices {
       .collection('notes'); // collection path in firestore
   // CRUD OPERATION
   //CREATE - INSERT - add new note
+  Future<void> addNote(String note) async {
+    await notes.add({
+      'note': note,
+      'timestamp': Timestamp.now(),
+    });
+  }
+
 //READ - SELECT - get -fetch notes from DB
 
 //UPDATE - EDIT - update note given id
