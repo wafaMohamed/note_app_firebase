@@ -21,6 +21,13 @@ class FireStoreServices {
         notes.orderBy('timestamp', descending: true).snapshots();
     return getNotes;
   }
+
 //UPDATE - EDIT - update note given id
+  Future<void> updateNote(String docId, String newNote) async {
+    await notes.doc(docId).update({
+      'note': newNote,
+      'timestamp': Timestamp.now(),
+    });
+  }
 //DELETE - REMOVE - delete note given id
 }

@@ -14,7 +14,8 @@ class _HomePageState extends State<HomePage> {
   TextEditingController textController = TextEditingController();
   FireStoreServices fireStoreServices = FireStoreServices.instance;
 
-  void openNoteDialog() {
+  void openNoteDialog({String? docID}) {
+    bool isUpdating = docID != null;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -28,14 +29,21 @@ class _HomePageState extends State<HomePage> {
         actions: [
           ElevatedButton(
             onPressed: () {
-              // add new note
-              fireStoreServices.addNote(textController.text);
+              if (docID == null) {
+                // add new note
+
+                fireStoreServices.addNote(textController.text);
+              } else {
+                fireStoreServices.updateNote(docID, textController.text);
+              }
               // clear the text controller
               textController.clear();
             },
-            child: Text(
-              'Add Note',
-            ),
+            child: isUpdating
+                ? Text('Update')
+                : Text(
+                    'Add Note',
+                  ),
           )
         ],
       ),
@@ -73,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => openNoteDialog(docID: docID),
                         icon: Icon(Icons.settings),
                       ),
                       IconButton(
