@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../database/remote/firestore_services.dart';
@@ -49,25 +50,44 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.pink[100]!,
         title: Text('Note App'),
       ),
-      body: ListView.builder(
-        itemCount: 2,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Note Text'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.settings),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.delete),
-                ),
-              ],
-            ),
-          );
+      body: StreamBuilder<QuerySnapshot>(
+        stream: fireStoreServices.getNotes(),
+        builder: (context, accessTo) {
+          // if we have data get all the docs
+          if (accessTo.hasData) {
+            List noteList = accessTo.data!.docs;
+            return ListView.builder(
+              itemCount: noteList.length,
+              itemBuilder: (context, index) {
+                // get each individual doc
+                var noteList = accessTo.data!.docs;
+                DocumentSnapshot doc = noteList[index];
+                String docID = doc.id;
+                // get note from each document
+                var data = doc.data() as Map<String, dynamic>;
+                String noteText = data['note'];
+
+                return ListTile(
+                  title: Text(noteText),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.settings),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.delete),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          } else {
+            return Text('No Note...');
+          }
         },
       ),
       floatingActionButton: FloatingActionButton(

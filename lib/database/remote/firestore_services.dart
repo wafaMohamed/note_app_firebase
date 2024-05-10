@@ -15,8 +15,12 @@ class FireStoreServices {
     });
   }
 
-//READ - SELECT - get -fetch notes from DB
-
+//READ - SELECT - Query- get -fetch notes from DB
+  Stream<QuerySnapshot> getNotes() {
+    final Stream<QuerySnapshot> getNotes =
+        notes.orderBy('timestamp', descending: true).snapshots();
+    return getNotes;
+  }
 //UPDATE - EDIT - update note given id
 //DELETE - REMOVE - delete note given id
 }
